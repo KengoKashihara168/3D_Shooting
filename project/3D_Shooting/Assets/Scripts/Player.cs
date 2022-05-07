@@ -12,8 +12,12 @@ public class Player : MonoBehaviour
     {
         Command moveLeft  =  gameObject.AddComponent<MoveLeft>();
         Command moveRight =  gameObject.AddComponent<MoveRight>();
+        Command moveUp    =  gameObject.AddComponent<MoveUp>();
+        Command moveDown  =  gameObject.AddComponent<MoveDown>();
         inputHandler.SetCommand(moveLeft,KeyCode.LeftArrow);
         inputHandler.SetCommand(moveRight,KeyCode.RightArrow);
+        inputHandler.SetCommand(moveUp,KeyCode.UpArrow);
+        inputHandler.SetCommand(moveDown,KeyCode.DownArrow);
     }
 
     private void Update()
