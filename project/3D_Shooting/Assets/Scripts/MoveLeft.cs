@@ -10,7 +10,7 @@ public class MoveLeft : Command
     public override void Execute(GameObject gameObject)
     {
         // 初回実行時にRigidBodyを取得
-        if(rigidBody)
+        if(!rigidBody)
         {
             rigidBody = gameObject.GetComponent<Rigidbody>();
         }
@@ -21,6 +21,8 @@ public class MoveLeft : Command
     // 移動
     private void Move()
     {
-        Debug.Log("左へ動く");
+        if(rigidBody.velocity.sqrMagnitude > Player.MaxSpeed) return;
+        Vector3 force = Vector3.left * Player.MoveSpeed * Time.deltaTime;
+        rigidBody.AddForce(force);
     }
 }
